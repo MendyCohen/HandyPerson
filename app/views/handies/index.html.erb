@@ -1,0 +1,6 @@
+<h1>HandyPeople</h1>
+<ul>
+  <% @handies.each do |handy| %>
+    <li><%= link_to handy.name, handy_path(handy) %></li>
+  <% end %>
+</ul>

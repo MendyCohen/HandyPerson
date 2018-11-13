@@ -1,0 +1,9 @@
+<%= link_to 'Back', :back %>
+<h1>Service</h1>
+<h2><%= @service.name %></h2>
+
+<ul>
+  <% @service.workers.each do |worker| %>
+    <li><%= link_to worker.name, worker %></li>
+  <% end %>
+</ul>

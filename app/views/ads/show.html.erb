@@ -1,0 +1,8 @@
+<h1>Service Call</h1>
+<ul>
+  <li>Customer: <%= @ad.customer.name %></li>
+  <li>Work Done: <%= @ad.job.name %></li>
+  <% @ad.service.handies.each do |handy| %>
+    <li>contractor:<%= handy.name %></li>
+  <% end %>
+</ul>

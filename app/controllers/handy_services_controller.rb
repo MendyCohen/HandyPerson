@@ -7,7 +7,8 @@ class HandyServicesController < ApplicationController
   def create
     @handyservice = HandyService.new(handyservice_params)
     @handyservice.save
-    redirect_to handy_path(@handy)
+    @handy = Handy.find(handyservice_params[:handy_id])
+    redirect_to @handy
   end
 
   private

@@ -4,6 +4,11 @@ require 'faker'
 #
 # Examples:
 #
+Service.destroy_all
+Handy.destroy_all
+User.destroy_all
+HandyService.destroy_all
+Ad.destroy_all
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Service.create(name: "Painting")
@@ -27,4 +32,8 @@ Service.create(name: "General Handyman")
 
 120.times {
   HandyService.create(service_id: Faker::Number.between(1, 10), handy_id: Faker::Number.between(1, 10))
+}
+
+20.times {
+  Ad.create(service_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), handy_id: Faker::Number.between(1, 30))
 }

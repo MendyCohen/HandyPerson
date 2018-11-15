@@ -1,11 +1,14 @@
 class AdsController < ApplicationController
 
-  # def index
-  #   @ads = Ad.all
-  # end
+   # def index
+   #   @ads = Ad.all
+   #   @users = User.all
+   # end
 
   def show
     @ad = Ad.find(params[:id])
+    #@user = User.find(params[:user_id])
+    #@service = Service.find(params[:service_id])
     # @handyservices = HandyService.all
     # @hps = HandyService.all
     @ads = Ad.all
@@ -15,7 +18,8 @@ class AdsController < ApplicationController
     @handyservices = HandyService.all
     @handy = Handy.new
     @handies = Handy.all
-    @handyfind = Handy.find(params[:id])
+    #@handyfind = Handy.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
 
@@ -29,29 +33,31 @@ class AdsController < ApplicationController
   end
 
   def create
+    # byebug
+    @user = User.find(params[:user_id])
     @ad = Ad.new(ad_params)
     @ad.save
+    redirect_to user_ad_path(@user, @ad)
+  end
+
+  def edit
+    @ad = Ad.find(params[:id])
+  end
+
+  def update
+    @ad = Ad.find(params[:id])
+    @ad.update(add_update_params)
+    redirect_to user_ad_path(@ad)
   end
 
   private
 
   def ad_params
-    params.require(:ad).permit(:user_id, :service_id)
+    params.permit(:user_id, :service_id, :handy_id, :rating)
+  end
+
+  def add_update_params
+    params.require("/users/#{params[:id]}").permit(:rating)
   end
 
 end
-
-
-# <ol>
-#   <% @ads.map do |ad| %>
-#     <% ad.service.handies.select do |handy| %>
-#       <li><%= handy.name %></li>
-#     <% end %>
-#   <% end %>
-# </ol>
-#
-# <%= form_for @ad do |f| %>
-#   <%= f.hidden_field :handy_id, value: @handy.id %>
-#   <%= f.collection_select :service_id, @services, :id, :name %><br>
-#   <%= f.submit %>
-# <% end %>

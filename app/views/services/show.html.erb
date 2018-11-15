@@ -2,8 +2,9 @@
 <h1>Service</h1>
 <h2><%= @service.name %></h2>
 
-<ul>
-  <% @service.workers.each do |worker| %>
-    <li><%= link_to worker.name, worker %></li>
+<ol>
+  <% @service.handies.each do |handy| %>
+    <li><%= link_to handy.name, user_service_handy_path(@user, @service, handy) %></li>
+
   <% end %>
-</ul>
+</ol>

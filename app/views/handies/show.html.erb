@@ -2,14 +2,20 @@
 <h1>Handy Person</h1>
 <h2>Name: <%= @handy.name %></h2>
 <h2>Username: <%= @handy.username %></h2>
-<h3>Services Available</h3>
+<h3>Services Provides</h3>
 <ul>
   <% @handy.services.each do |work| %>
-    <li><%= link_to work.name, work %></li>
+    <li><%=  work.name %></li>
   <% end %>
 </ul>
 
-<%= form_for @handyservice do |f| %>
+<h3><%= button_to 'New Post', user_ads_path(@user, handy_id: @handy.id, service_id: @service.id) %></h3>
+
+
+</br>
+</br>
+</br>
+<%= form_for [:user, @handyservice] do |f| %>
   <%= f.hidden_field :handy_id, value: @handy.id %>
   <%= f.collection_select :service_id, @services, :id, :name %><br>
   <%= f.submit %>

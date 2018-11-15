@@ -2,7 +2,14 @@
 <ul>
   <li>Customer: <%= @ad.customer.name %></li>
   <li>Work Done: <%= @ad.job.name %></li>
-  <% @ad.service.handies.each do |handy| %>
-    <li>contractor:<%= handy.name %></li>
-  <% end %>
+  <li>Handy Person: <%= @ad.handy.name %></li>
+  <li>Rating: <%= @ad.rating %></li>
 </ul>
+
+<%= form_for user_path(@ad), method: :patch do |f| %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in: 1..5 %>
+  <%= f.submit 'Rating'%>
+<% end %>
+
+<%= link_to 'Profile Page', user_path(@user) %>

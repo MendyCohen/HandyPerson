@@ -2,6 +2,6 @@
 <h1>Services</h1>
 <ul>
   <% @services.each do |service| %>
-    <li><%= link_to service.name, service_path(service) %></li>
+    <li><%= link_to service.name, user_service_path(@user, service) %></li>
   <% end %>
 </ul>

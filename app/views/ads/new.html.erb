@@ -3,13 +3,12 @@ Ads new page<br>
   <%# ad.service.name %>
 <%# end %>
 
-<%= form_for @ad do |f| %>
+<%= form_for [:user, @ad] do |f| %>
+  <%= %>
   <%= f.collection_select :service_id, @services, :id, :name %>
 
   <%= f.collection_select :handy_id, @handies, :id, :name %>
 
-  <%= f.collection_select :user_id, @users, :id, :name %>
-
   <%= f.submit 'Create'%>
-  
+
 <% end %>

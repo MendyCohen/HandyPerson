@@ -1,56 +1,27 @@
-<%= link_to 'Back', :back %>
+<div id="content">
 <h1>Profile</h1>
 <h2>Name: <%= @user.name %></h2>
 <h2>Username: <%= @user.username %></h2>
+<%taco = "🌮"%>
 
-<h3>Handy Visits</h3>
+<h3>Services Calls</h3>
 <ul>
-  <% @user.services.each do |service| %>
-  <% @user.handies.each do |handy| %>
-    <li><%= link_to service.name, service %></li>
-      <ul>
-        <li><%= link_to handy.name, handy %></li>
-      </ul>
-    <% end %>
+  <% @user.ads.each do |ad| %>
+  <%= link_to ad.service.name, user_ad_path(@user, ad) %>
+    <br>
+  <%= ad.handy.name %>
+  <br>
+    <% if ad.rating != nil %>
+
+  Tacos: <%= taco * ad.rating %>
+    <br>
+  <% else %>
+  <%end%>
+  <br>
   <% end %>
-</ul>
+  </ul>
+  <br>
 
-<select>
-  <% @services.each do |service| %>
-    <option value="<%= service.id %>"> <%= service.name%> </option>
-    <% end %>
-</select>
+<ul class="btn"  align="center"><%= link_to 'Request Service', user_services_path(@user) %></ul>
 
-<ol>
-  <% @services.each do |service| %>
-      <select >
-        <% service.handies.each do |handy| %>
-        <option value="<%= handy.id %>"> <%= handy.name %> </option>
-        <% end %>
-      </select>
-  <% end %>
-</ol><br>
-<br>
-<br>
-<br>
-<br>
-
-<%= form_for @ad do |f| %>
-
-  <%= f.hidden_field :user_id, value: @user.id %>
-
-  <%= f.collection_select :service_id, @services, :id, :name %>
-
-  <%# f.collection_select :handy_id, @handies, :id, :name %>
-
-  <%= f.submit 'Create'%>
-
-<% end %>
-
-
-
-
- <%# form_for @service do |f| %>
-   <%# f.collection_select :service_id, @services, :id, :name %><br>
-   <%# f.submit %>
- <%# end %>
+</div>

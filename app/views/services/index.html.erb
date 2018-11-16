@@ -1,7 +1,8 @@
-<%= link_to 'Back', :back %>
+<div id="content">
 <h1>Services</h1>
 <ul>
   <% @services.each do |service| %>
-    <li><%= link_to service.name, service_path(service) %></li>
+    <li class="btn"  align="center"><%= link_to service.name, user_service_path(@user, service) %></li>
   <% end %>
 </ul>
+</div>

@@ -23,7 +23,7 @@ Service.create(name: "Yardwork")
 Service.create(name: "General Handyman")
 
 100.times {
-  User.create(name: Faker::FunnyName.name, username: Faker::Internet.user_name)
+  User.create(name: Faker::FunnyName.name, username: Faker::Internet.user_name, password: '12345')
 }
 
 30.times {
@@ -35,5 +35,5 @@ Service.create(name: "General Handyman")
 }
 
 20.times {
-  Ad.create(service_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), handy_id: Faker::Number.between(1, 30))
+  Ad.create(service_id: Faker::Number.between(1, 10), user_id: Faker::Number.between(1, 10), handy_id: Faker::Number.between(1, 30), rating: Faker::Number.between(1, 5))
 }

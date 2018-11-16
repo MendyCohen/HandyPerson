@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_144912) do
+ActiveRecord::Schema.define(version: 2018_11_16_013856) do
 
   create_table "ads", force: :cascade do |t|
     t.integer "service_id"
     t.integer "user_id"
     t.integer "handy_id"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_144912) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password"
   end
 
 end

@@ -10,6 +10,25 @@
   </head>
 
   <body>
+
+
+
+
+    <div id="header">
+      <a id="logo">HandyJob</a>
+      <ul id="menu">
+        <% if @user %>
+        <li><h4><%= link_to "Services", user_services_path(@user) %></h4></li>
+        <li><h4><%= link_to "Profile", user_path(@user) %></h4></li>
+        <li><h4><%= link_to 'Logout' %></h4></li>
+        <li><h4><%= link_to 'Back', :back %></h4></li>
+        <% else %>
+        <li><h4>  Put some sort of design here!    </h4></li>
+      <% end %>
+      </ul>
+    </div>
+
+
     <%= yield %>
   </body>
 </html>

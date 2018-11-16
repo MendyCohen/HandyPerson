@@ -1,8 +1,23 @@
-<h1>Service Call</h1>
+<div id="content">
+  <h1>Service Call</h1>
+<%taco = "🌮"%>
+
 <ul>
   <li>Customer: <%= @ad.customer.name %></li>
   <li>Work Done: <%= @ad.job.name %></li>
-  <% @ad.service.handies.each do |handy| %>
-    <li>contractor:<%= handy.name %></li>
-  <% end %>
+  <li>Handy Person: <%= @ad.handy.name %></li>
+  <% if @ad.rating != nil %>
+  <li>Rating: <%= taco * @ad.rating %></li>
+  <%end%>
+
 </ul>
+
+<%= form_for user_path(@ad), method: :patch do |f| %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating, in: 1..5 %>
+  <%= f.submit 'Rate'%>
+<% end %>
+
+
+<ul class="btn" align="center"><%= link_to 'Profile Page', user_path(@user),  :method => "get" %></ul>
+</div>

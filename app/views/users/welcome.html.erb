@@ -2,6 +2,7 @@
   <%# f.label :name %>
   <%# f.text_field :name %>
 <%# end %>
+<div id="content">
 <ul>
   <h1>Create Account</h1>
   <%= form_for User.new, :url => create_path, :method => :post do |f| %>
@@ -26,3 +27,4 @@
     <%= f.submit 'Sign In' %>
   <% end %>
 </ul>
+</div>

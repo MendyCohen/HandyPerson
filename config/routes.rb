@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/users/:user_id/services/:service_id/handies/:id/ads/create', to: 'ads#create', as: 'ad_create'
   post '/create', to:'users#create', as: 'create'
   resources :users do
     # post '/ads', to: 'ads#create', as: 'ads'

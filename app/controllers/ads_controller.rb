@@ -25,18 +25,15 @@ class AdsController < ApplicationController
 
 
 
-  def new
-    @ad = Ad.new
-    @services = Service.all
-    @handies = Handy.all
-    @users = User.all
-  end
+
 
   def create
+    @ad = Ad.new(user_id: params[:user_id], service_id: params[:service_id], handy_id: params[:id])
+    @ad.save
     # byebug
     @user = User.find(params[:user_id])
-    @ad = Ad.new(ad_params)
-    @ad.save
+    #@service = Service.find(params[:service_id])
+
     redirect_to user_ad_path(@user, @ad)
   end
 
@@ -53,7 +50,7 @@ class AdsController < ApplicationController
   private
 
   def ad_params
-    params.permit(:user_id, :service_id, :handy_id, :rating)
+    params.permit(:user_id, :service_id, :id, :rating)
   end
 
   def add_update_params

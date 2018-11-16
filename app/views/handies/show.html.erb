@@ -3,6 +3,7 @@
 <h1>Handy Person</h1>
 <h2>Name: <%= @handy.name %></h2>
 <h2>Username: <%= @handy.username %></h2>
+
 <% ratings = [] %>
 <% total_rating = 0 %>
 <% all_ratings = [] %>
@@ -13,6 +14,8 @@
    <% all_ratings << rating %>
  <% end %>
 <% end %>
+
+<% if all_ratings.length != 0 %>
 <% rating = total_rating / all_ratings.length %>
 <h2>Average Rating: <%= taco * rating %></h2>
 <h3>Services Provides</h3>
@@ -20,10 +23,11 @@
   <% @handy.services.each do |work| %>
     <li><%=  work.name %></li>
   <% end %>
+  <% end %>
 </ul>
 
 
-<li class="btn"  align="center"><%= link_to 'Request Service', user_ads_path(@user, handy_id: @handy.id, service_id: @service.id, :method => 'post') %></li>
+<li class="btn"  align="center"><%= link_to 'Request Service', ad_create_path, method: :post %></li>
 
 </div>
 
